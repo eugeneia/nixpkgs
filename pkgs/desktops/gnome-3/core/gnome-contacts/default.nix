@@ -5,13 +5,13 @@
 , vala, meson, ninja }:
 
 let
-  version = "3.30.2";
+  version = "3.31.90";
 in stdenv.mkDerivation rec {
   name = "gnome-contacts-${version}";
 
   src = fetchurl {
     url = "mirror://gnome/sources/gnome-contacts/${stdenv.lib.versions.majorMinor version}/${name}.tar.xz";
-    sha256 = "1b0pkdwz9yqcv82zzdf76rs2w3wa5zli8pka09wnahikx1ykk43h";
+    sha256 = "1y73aki81qapn9hw529xs6x390ss1ab5hj4aaf2pvvcrif99d80l";
   };
 
   propagatedUserEnvPkgs = [ evolution-data-server ];
@@ -28,8 +28,8 @@ in stdenv.mkDerivation rec {
   ];
 
   postPatch = ''
-    chmod +x meson_post_install.py
-    patchShebangs meson_post_install.py
+    chmod +x build-aux/meson_post_install.py
+    patchShebangs build-aux/meson_post_install.py
   '';
 
   # In file included from src/gnome-contacts@exe/contacts-avatar-selector.c:30:0:
